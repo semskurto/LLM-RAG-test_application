@@ -8,7 +8,7 @@ from model import AnswerGenerator
 app = FastAPI()
 
 # Initialize Pinecone with API key and environment settings
-pcdb = PineconeManager(index_name="test_case_glov", metric='cosine')
+pcdb = PineconeManager(index_name="test-case-glov", metric='cosine')
 
 # Initialize LLM Model for query answer
 answer_generator = AnswerGenerator()
@@ -71,6 +71,6 @@ async def query_endpoint(request: QueryRequest):
                 },
             'output':{
                 "answer": str(answer),
-                "top_5_chunks": str(" ".join(top_chunks))
+                "top_5_chunks": str("\n".join(top_chunks))
                 }
             }
