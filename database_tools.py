@@ -72,7 +72,8 @@ class PineconeManager:
         :param chunks: A list of text chunks to be embedded and inserted.
         :param namespace: The namespace under which the embeddings will be stored. Default is an empty string.
         """
-        vectors = [(str(i), get_embedding(chunk).tolist(), {'text': chunk}) for i, chunk in enumerate(chunks)]
+        print(3)
+        vectors = [(str(i), get_embedding(chunk)[0].tolist(), {'text': chunk}) for i, chunk in enumerate(chunks)]
         self.index.upsert(vectors=vectors, namespace=namespace)
         print("Embeddings have been successfully inserted into Pinecone.")
 
