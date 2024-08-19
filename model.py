@@ -8,6 +8,6 @@ class AnswerGenerator:
     def generate_answer(self, context, question):
         input_text = f"question: {question} context: {context}"
         inputs = self.tokenizer.encode(input_text, return_tensors='pt')
-        outputs = self.model.generate(inputs, max_length=512, num_beams=5, early_stopping=True)
+        outputs = self.model.generate(inputs, max_length=512, num_beams=8, early_stopping=True)
         answer = self.tokenizer.decode(outputs[0], skip_special_tokens=True)
         return answer
