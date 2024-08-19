@@ -29,7 +29,7 @@ def get_embedding(text: str):
 
 
 class PineconeManager:
-    def __init__(self, environment: str, index_name: str, dimension: int = 384, metric: str = 'cosine', region: str = 'us-east-1', api_key: str = 'f7e247d6-f9a9-4b4c-a847-89c43f183053'):
+    def __init__(self, index_name: str, environment: str = 'aws', dimension: int = 384, metric: str = 'cosine', region: str = 'us-east-1', api_key: str = 'f7e247d6-f9a9-4b4c-a847-89c43f183053'):
         """
         Initializes the PineconeManager with necessary configurations.
 
