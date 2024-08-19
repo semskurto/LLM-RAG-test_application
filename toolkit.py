@@ -30,7 +30,7 @@ def download_pdf_and_checksum(url: str):
     # Load PDF content into memory
     pdf_file = BytesIO(response.content)
     
-    return pdf_file, checksum
+    return pdf_file, str(checksum)
 
 def split_pdf_chunks(pdf_file: BytesIO, chunk_size: int = 100):
     """
