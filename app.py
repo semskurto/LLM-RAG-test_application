@@ -2,7 +2,7 @@ from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from typing import List
 from toolkit import split_pdf_chunks, download_pdf_and_checksum
-from database_tools import PineconeManager, get_embedding
+from database_tools import PineconeManager
 from model import AnswerGenerator
 
 app = FastAPI()
@@ -26,9 +26,10 @@ def perform_embedding_and_indexing(url: str):
     url (str): The URL of the PDF to process.
 
     Returns:
-    List[str]: The list of chunks from the PDF.
+    List[str]: The list(or None) of chunks from the PDF.
     """
-    pdf_file, checksum =download_pdf_and_checksum(url)
+    pdf_file, checksum = download_pdf_and_checksum(url)
+
     # Check if the PDF is already indexed namespaces, if not, index it
     pcdb_index_namespaces = pcdb.list_namespaces
     print(pcdb_index_namespaces)
