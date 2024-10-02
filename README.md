@@ -1,4 +1,4 @@
-# RAG TEST CASE
+# LLM RAG Test Application
  
 ### Application features:
 All the specified stages of the application have been completed.
