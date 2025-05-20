@@ -29,25 +29,27 @@ def get_embedding(text: str):
 
 
 class PineconeManager:
-    def __init__(self, index_name: str, environment: str = 'aws', dimension: int = 384, metric: str = 'cosine', region: str = 'us-east-1', api_key: str = 'f7e247d6-f9a9-4b4c-a847-89c43f183053'):
+    def __init__(self, index_name: str, dimension: int = 384, metric: str = 'cosine', region: str = 'us-east-1'):
         """
         Initializes the PineconeManager with necessary configurations.
+        Pinecone API key and environment are set to hardcoded placeholders.
 
-        :param api_key: Your Pinecone API key.
-        :param environment: The environment for Pinecone (e.g., 'aws', 'gcp').
         :param index_name: The name of the index to be created or accessed.
         :param dimension: The dimension of the embeddings used in the index.
         :param metric: The similarity metric to be used ('cosine', 'dotproduct', etc.). Default is 'cosine'.
         :param region: The region where the index is hosted. Default is 'us-east-1'.
         """
-        self.api_key = api_key
-        self.environment = environment
+        self.api_key = "YOUR_PINECONE_API_KEY_HERE"  # Hardcoded placeholder
+        self.environment = "YOUR_PINECONE_ENVIRONMENT_HERE"  # Hardcoded placeholder, e.g., "aws", "gcp", "azure"
+
         self.index_name = index_name
         self.dimension = dimension
         self.metric = metric
         self.region = region
         
         self.pc = pinecone.Pinecone(api_key=self.api_key)
+        # The 'environment' variable should represent the cloud provider (e.g., 'aws', 'gcp').
+        # The region parameter for ServerlessSpec is separate.
         self.spec = pinecone.ServerlessSpec(cloud=self.environment, region=self.region)
         self.index = None
 
